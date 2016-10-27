@@ -64,10 +64,10 @@ end
 function nvm-fast
 	set -l brigand_nvm_fish_path ~/.nvm/versions/node
 	if test (count $argv[1]) -lt 1
-		echo 'nvm-fast: at least one argument is required'
+		set command "argument-missing"
+	else
+		set command $argv[1]
 	end
-
-	set -l command $argv[1]
 
 	if test $command = 'use'
 		set -l target_version $argv[2]
@@ -97,4 +97,3 @@ end
 function nvm
 	nvm-fast $argv
 end
-
